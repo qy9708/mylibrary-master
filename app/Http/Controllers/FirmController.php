@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Firm;
 use App\Http\Resources\FirmCollection;
 use App\Http\Resources\FirmResource;
+use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class FirmController extends Controller
 {
