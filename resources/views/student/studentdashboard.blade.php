@@ -77,14 +77,17 @@ h2.a{
 </div>
 <div class="gallery" >
   <img src="/images/list.png"></i>
+  <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Log Records</button>
 </div>
 </div>
 <div id="tabContent" style="margin:0px" >
   <div class="gallery">
     <img src="/images/document.png"></i>
+    <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Report Submission</button>
   </div>
   <div class="gallery">
     <img src="/images/document.png"></i>
+    <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Document Submission</button>
   </div>
 
 </div>
