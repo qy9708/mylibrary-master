@@ -19,10 +19,10 @@ class FirmController extends Controller
      public function studentfirmindex(){
      if (Gate::allows('student-only',auth()->user())) {
 
-       $firms = Firm::orderBy('name','nature_of_business','asc')->get();
-     return view('/student/showfirms',['firms' => $firms]);
+       $firms = Firm::orderBy('name','asc')->get();
+     return view('student.showfirms',['firms' => $firms]);
        }
-     return redirect('/student/studentdashboard');
+     return redirect('student.studentdashboard');
    }
 
     /**
@@ -55,10 +55,10 @@ class FirmController extends Controller
     public function show($id)
     {
       {
-        $firm = Firm::find($id);
+        $firm = Firm::findOrFail($id);
         if(!$firm) throw new ModelNotFoundException;
-        $firm = Firm::find($id);
-        return view('/student/showfirms',[
+        $firm = Firm::findOrFail($id);
+        return view('student.showfirms',[
             'firm'=> $firm,
         ]);
       }
