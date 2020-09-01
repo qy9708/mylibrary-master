@@ -39,25 +39,25 @@ use App\Common;
 				 <div>{{ $i+1 }}</div>
 			 </td>
 			  <td class="table-text">
-				 <div>{{ $firms->name }}</div>
+				 <div>{{ $firm->name }}</div>
 			 </td>
        <td class="table-text">
-        <div>{{ $firms->reg_no }}</div>
+        <div>{{ $firm->reg_no }}</div>
         </td>
         <td class="table-text">
-          <div>{{ $firms->location }}</div>
+          <div>{{ $firm->location }}</div>
         </td>
         <td class="table-text">
-          <div>{{ $firms->email }}</div>
+          <div>{{ $firm->email }}</div>
         </td>
         <td class="table-text">
-          <div>{{ $firms->phone_no }}</div>
+          <div>{{ $firm->phone_no }}</div>
         </td>
         <td class="table-text">
-          <div>{{ $firms->website }}</div>
+          <div>{{ $firm->website }}</div>
         </td>
         <td class="table-text">
-          <div>{{ $firms->nature_of_business }}</div>
+          <div>{{ $firm->nature_of_business }}</div>
         </td>
 			 </tr>
 			 @endforeach

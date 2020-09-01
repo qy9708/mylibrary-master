@@ -32,6 +32,7 @@ Route::put('/book/{id}','BookController@update')->name('book.update')->middlewar
 Route::post('/book/store','BookController@store')->name('book.store')->middleware('auth');
 
 Route::get('/firmindex','FirmController@studentfirmindex')->name('firm.index')->middleware('auth');
+
 Route::get('/publisher/create','PublishersController@create')->name('publisher.create')->middleware('auth');
 Route::get('/publisher/{id}/edit','PublishersController@edit')->name('publsher.edit')->middleware('auth');
 Route::delete('/publisher/{id}', 'PublishersController@destroy')->name('publisher.destroy');
