@@ -7,7 +7,7 @@ use App\Common;
 
 	<!-- Bootstrap Boilerplate... -->
 
-		<h1 text-align="center"> Company List </h1>
+		<h1> Company List </h1>
 		<div class="panel-body">
 
 			@if (count($firms) > 0)
