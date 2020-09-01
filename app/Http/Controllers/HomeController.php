@@ -52,8 +52,10 @@ class HomeController extends Controller
     } else if (Gate::allows('admin-only',auth()->user())) {
 
       return view('/admin/admindashboard');
-    } else {
+    } else if (Gate::allows('admin-only',auth()->user())){
       return view('/lecturer/lecturerdashboard');
+    } else {
+      return redirect('/login')->with('message', 'Login Failed!');
     }
     return redirect('/');
   }
