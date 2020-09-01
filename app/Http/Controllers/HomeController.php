@@ -51,9 +51,9 @@ class HomeController extends Controller
       return view('/student/studentdashboard');
     } else if (Gate::allows('admin-only',auth()->user())) {
 
-      return view('/admin/adminhomepage');
+      return view('/admin/admindashboard');
     } else {
-      return view('/lecturer/lecturerhomepage');
+      return view('/lecturer/lecturerdashboard');
     }
     return redirect('/');
   }
