@@ -7,11 +7,16 @@ use App\Common;
 
 	<!-- Bootstrap Boilerplate... -->
 
-		<h1> Company List </h1>
+		<h1 text-align="center"> Company List </h1>
 		<div class="panel-body">
+
+			@if (count($firms) > 0)
+				 <table class="table table-striped task-table" border="1" width="100%"
+						style="border-collapse:collapse;font-family:Arial;">
+				<!-- Table Headings -->
       <thead>
-			<a href="{{ url('/studentdashboard') }}">Student Home Page         </a>
-			<br>
+			<a href="{{ url('/studentdashboard') }}">Student Home Page </a> //cannot center
+			<br><br>
 				<tr>
 				 <th>No.</th>
 				 <th>Name</th>
@@ -24,10 +29,7 @@ use App\Common;
 				 </tr>
 				 </thead>
 
-		@if (count($firms) > 0)
-			 <table class="table table-striped task-table" border="1" width="100%"
-					style="border-collapse:collapse;font-family:Arial;">
-			<!-- Table Headings -->
+
 
 			<!-- Table Body -->
 			<tbody>
