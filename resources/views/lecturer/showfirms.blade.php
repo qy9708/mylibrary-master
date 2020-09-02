@@ -7,7 +7,8 @@ use App\Common;
 
 	<!-- Bootstrap Boilerplate... -->
 
-		<h1 style="text-align:center"> Company List </h1>
+
+		<h class="a"> Company List </h>
 		<div class="panel-body">
 
 			@if (count($firms) > 0)
@@ -68,8 +69,14 @@ use App\Common;
 			 </tbody>
 		 </table>
 
-
-
-
 		</div>
  @endsection
+ <style>
+ h.a{
+	 text-align: center;
+	 padding-left: 50px;
+	 font-weight: bold;
+	 font-size: 40px;
+	 text-decoration: underline;
+ }
+</style>
