@@ -72,7 +72,13 @@ class FirmController extends Controller
      */
     public function edit($id)
     {
-        //
+      if (Gate::allows('admin-only',auth()->user())) {
+      $admin = Admin::find($id);
+      if(!$admin) throw new ModelNotFoundException;
+
+      return view('/admin/edit', ['admin'=> $admin]);
+      }
+      return redirect('/');
     }
 
     /**
@@ -95,6 +101,8 @@ class FirmController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $admin = Admin::findOrFail($id);
+      $admin->delete();
+      return redirect()->route('admin.showfirms')->with(['message'=> 'Successfully deleted!!']);
     }
 }
