@@ -15,7 +15,7 @@ use App\Common;
 						style="border-collapse:collapse;font-family:Arial;">
 				<!-- Table Headings -->
       <thead>
-			<a href="{{ url('/admindashboard') }}">Admin Home Page </a>
+			<a href="{{ url('/lecturerdashboard') }}">Lecturer Home Page </a>
 			<br><br>
 				<tr>
 				 <th>No.</th>
