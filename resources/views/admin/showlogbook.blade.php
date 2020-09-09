@@ -36,54 +36,11 @@ use App\Common;
 				 <div>{{ $i+1 }}</div>
 			 </td>
 			  <td class="table-text">
-				 <div>{{ $firm->name }}</div>
+				 <div>{{ $log->week }}</div>
 			 </td>
        <td class="table-text">
-        <div>{{ $firm->reg_no }}</div>
+        <div>{{ $log->description }}</div>
         </td>
-        <td class="table-text">
-          <div>{{ $firm->location }}</div>
-        </td>
-        <td class="table-text">
-          <div>{{ $firm->email }}</div>
-        </td>
-        <td class="table-text">
-          <div>{{ $firm->phone_no }}</div>
-        </td>
-        <td class="table-text">
-          <div>{{ $firm->website }}</div>
-        </td>
-        <td class="table-text">
-          <div>{{ $firm->nature_of_business }}</div>
-        </td>
-				<td class="table-text">
- 				 <div>
- 				 {!! link_to_route( 'admin.edit',
- 									 $title = 'Edit',
- 									 $parameters = ['id' => $admin->id, ]
- 				  ) !!}
-
- 				 </div>
- 			 </td>
- 			 <td class="table-text">
-
- 				<div>
-
- 				{!! Form::open(['method' => 'DELETE',
- 								'route' => ['admin.destroy',
- 								$admin->id],
- 								'onsubmit' => 'return confirm("Are you sure ?")']
- 				) !!}
-
- 				{!! Form::submit('Delete',
- 								['class' => 'btn btn-danger']
- 				) !!}
-
- 				{!! Form::close()
- 				!!}
- 				</div>
-
- 			  </td>
 			 </tr>
 			 @endforeach
        @else
