@@ -79,7 +79,7 @@ class FirmController extends Controller
     {
       if (Gate::allows('admin-only',auth()->user())) {
       $firm = Firm::find($id);
-      if(!$admin) throw new ModelNotFoundException;
+      if(!$firm) throw new ModelNotFoundException;
 
       return view('/admin/edit', ['firm'=> $firm]);
       }
@@ -95,7 +95,13 @@ class FirmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $firm = Firm::find($id);
+        if(!$firm) throw new ModelNotFoundException;
+
+         $firm->fill($request->all());
+         $firm->save();
+
+         return redirect()->route('firm.index');
     }
 
     /**
@@ -109,7 +115,7 @@ class FirmController extends Controller
         if (Gate::allows('admin-only',auth()->user())) {
           $firm = Firm::findOrFail($id);
           $firm->delete();
-          return redirect()->route('admin.showfirms')->with(['message'=> 'Successfully deleted!!']);
+          return redirect()->route('firm.index')->with(['message'=> 'Successfully deleted!!']);
         }
         return redirect('/');
     }
