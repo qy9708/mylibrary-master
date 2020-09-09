@@ -30,7 +30,7 @@ class AdminController extends Controller
         if (Gate::allows('admin-only',auth()->user())) {
           $firms = new Firm();
 
-          return view('/admin/create', ['firms' => $firms,]);
+          return view('/admin/create', ['firm' => $firm,]);
         }
         return redirect('/');
 }
@@ -44,7 +44,12 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+      $firm = new Firm();
+      $firm->fill($request->all());
+      $firm->save();
+
+      return redirect()->route('firmindex');
     }
 
     /**
@@ -66,7 +71,13 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+      if (Gate::allows('admin-only',auth()->user())) {
+      $firm = Firm::find($id);
+      if(!$firm) throw new ModelNotFoundException;
+
+      return view('/admin/edit', ['firm'=> $firm]);
+      }
+      return redirect('/');
     }
 
     /**
@@ -78,7 +89,13 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $firm = Firm::find($id);
+        if(!$firm) throw new ModelNotFoundException;
+
+         $firm->fill($request->all());
+         $firm->save();
+
+         return redirect()->route('firm.index');
     }
 
     /**
@@ -89,7 +106,12 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+      if (Gate::allows('admin-only',auth()->user())) {
+        $firm = Firm::findOrFail($id);
+        $firm->delete();
+        return redirect()->route('firm.index')->with(['message'=> 'Successfully deleted!!']);
+      }
+      return redirect('/');
     }
 
     public function admindashboard(){
