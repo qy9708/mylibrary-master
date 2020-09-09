@@ -13,7 +13,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+      if (Gate::allows('admin-only',auth()->user())) {
+        $firms = Firm::orderBy('name','asc')->get();
+        return view('/admin/showfirms',['firms' => $firms]);
+      }
+      return redirect('/');
     }
 
     /**
@@ -23,7 +27,13 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        if (Gate::allows('admin-only',auth()->user())) {
+          $firms = new Firm();
+
+          return view('/admin/create', ['firms' => $firms,]);
+        }
+        return redirect('/');
+}
     }
 
     /**
