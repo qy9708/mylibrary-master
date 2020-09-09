@@ -15,7 +15,7 @@ use App\Common;
 						style="border-collapse:collapse;font-family:Arial;">
 				<!-- Table Headings -->
       <thead>
-			<a href="{{ url('/admindashboard') }}">Admin Home Page </a> //cannot center and cannot redirect
+			<a href="{{ url('/admindashboard') }}">Admin Home Page </a>
 			<br><br>
 				<tr>
 				 <th>No.</th>
@@ -26,6 +26,7 @@ use App\Common;
          <th>Phone</th>
          <th>Website</th>
          <th>Nature of Business</th>
+				 <th colspan="2">Actions</th>
 				 </tr>
 				 </thead>
 
@@ -61,6 +62,34 @@ use App\Common;
         <td class="table-text">
           <div>{{ $firm->nature_of_business }}</div>
         </td>
+				<td class="table-text">
+ 				 <div>
+ 				 {!! link_to_route( 'admin.edit',
+ 									 $title = 'Edit',
+ 									 $parameters = ['id' => $admin->id, ]
+ 				  ) !!}
+
+ 				 </div>
+ 			 </td>
+ 			 <td class="table-text">
+
+ 				<div>
+
+ 				{!! Form::open(['method' => 'DELETE',
+ 								'route' => ['admin.destroy',
+ 								$admin->id],
+ 								'onsubmit' => 'return confirm("Are you sure ?")']
+ 				) !!}
+
+ 				{!! Form::submit('Delete',
+ 								['class' => 'btn btn-danger']
+ 				) !!}
+
+ 				{!! Form::close()
+ 				!!}
+ 				</div>
+
+ 			  </td>
 			 </tr>
 			 @endforeach
        @else

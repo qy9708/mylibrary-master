@@ -15,7 +15,7 @@ use App\Common;
 						style="border-collapse:collapse;font-family:Arial;">
 				<!-- Table Headings -->
       <thead>
-			<a href="{{ url('/studentdashboard') }}">Student Home Page </a> //cannot center and cannot redirect
+			<a href="{{ url('/studentdashboard') }}">Student Home Page </a> 
 			<br><br>
 				<tr>
 				 <th>No.</th>

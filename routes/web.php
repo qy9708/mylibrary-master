@@ -22,7 +22,7 @@ Route::get('/contactus', 'HomeController@getContactUs');
 Route::get('/book', 'BookController@getBook');
 Route::get('/bookshow/{id}', 'BookController@show') ->name('/bookshow');
 
-Route::get('/', 'HomeController@getPage')->middleware('auth');;
+Route::get('/', 'HomeController@getPage')->middleware('auth');
 
 Route::get('/bookindex','BookController@adminbookindex')->name('book.index')->middleware('auth');
 Route::get('/book/create','BookController@create')->name('book.create')->middleware('auth');

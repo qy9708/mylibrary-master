@@ -9,19 +9,19 @@
       <li class="nav-item active">
         <a class="nav-link" href="/"><i class="fa fa-fw fa-home"></i>Home<span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/aboutus"><i class="fa fa-fw fa-users"></i>About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/book"><i class="fa fa-fw fa-book"></i>Book</a>
+           </li>
     <li class="nav-item">
-      <a class="nav-link" href="/aboutus"><i class="fa fa-fw fa-users"></i>About Us</a>
+      <a class="nav-link" href="/facilities"><i class="fa fa-fw fa-institution"></i>Facilities</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/book"><i class="fa fa-fw fa-book"></i>Book</a>
-         </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/facilities"><i class="fa fa-fw fa-institution"></i>Facilities</a>
-  </li>
 
-<li class="nav-item">
-  <a class="nav-link" href="/contactus"><i class="fa fa-fw fa-envelope"></i>Contact Us</a>
-</li>
+  <li class="nav-item">
+    <a class="nav-link" href="/contactus"><i class="fa fa-fw fa-envelope"></i>Contact Us</a>
+  </li>
 </ul>
 
 
