@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class AuthorCollection extends ResourceCollection
+class AdminCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -15,7 +15,7 @@ class AuthorCollection extends ResourceCollection
     public function toArray($request)
     {
       return [
-          'data' =>AuthorResource::collection($this->collection),
+          'data' =>AdminResource::collection($this->collection),
       ];
     }
 }
