@@ -16,6 +16,7 @@ use App\Common;
 				<!-- Table Headings -->
       <thead>
 			<a href="{{ url('/admindashboard') }}">Admin Home Page </a>
+			<a href="{{ url('/admin/create') }}"> Add New Company</a>
 			<br><br>
 				<tr>
 				 <th>No.</th>
