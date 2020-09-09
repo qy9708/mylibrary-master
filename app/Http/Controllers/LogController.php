@@ -57,7 +57,7 @@ class LogController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

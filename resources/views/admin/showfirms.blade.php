@@ -64,10 +64,10 @@ use App\Common;
         </td>
 				<td class="table-text">
  				 <div>
- 				 {!! link_to_route( 'admin.edit',
- 									 $title = 'Edit',
- 									 $parameters = ['id' => $admin->id, ]
- 				  ) !!}
+					 {!! link_to_route( 'admin.edit',
+				 						 $title = 'Edit',
+				 						 $parameters = ['id' => $firm->id, ]
+				 		) !!}
 
  				 </div>
  			 </td>
@@ -75,18 +75,19 @@ use App\Common;
 
  				<div>
 
- 				{!! Form::open(['method' => 'DELETE',
- 								'route' => ['admin.destroy',
- 								$admin->id],
- 								'onsubmit' => 'return confirm("Are you sure ?")']
- 				) !!}
+									{!! Form::open(['method' => 'DELETE',
+													'route' => ['admin.destroy',
+													$firm->id],
+													'onsubmit' => 'return confirm("Are you sure ?")']
+									) !!}
 
- 				{!! Form::submit('Delete',
- 								['class' => 'btn btn-danger']
- 				) !!}
+									{!! Form::submit('Delete',
+													['class' => 'btn btn-danger']
+									) !!}
 
- 				{!! Form::close()
- 				!!}
+									{!! Form::close()
+									!!}
+
  				</div>
 
  			  </td>

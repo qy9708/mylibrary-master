@@ -16,12 +16,17 @@ class FirmController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function studentfirmindex(){
+     public function showfirmindex(){
      if (Gate::allows('student-only',auth()->user())) {
 
        $firms = Firm::orderBy('name','asc')->get();
-     return view('student.showfirms',['firms' => $firms]);
+     return view('/student/showfirms',['firms' => $firms]);
        }
+       if (Gate::allows('admin-only',auth()->user())) {
+
+         $firms = Firm::orderBy('name','asc')->get();
+       return view('/admin/showfirms',['firms' => $firms]);
+         }
      return redirect('student.studentdashboard');
    }
 
@@ -73,10 +78,10 @@ class FirmController extends Controller
     public function edit($id)
     {
       if (Gate::allows('admin-only',auth()->user())) {
-      $admin = Admin::find($id);
+      $firm = Firm::find($id);
       if(!$admin) throw new ModelNotFoundException;
 
-      return view('/admin/edit', ['admin'=> $admin]);
+      return view('/admin/edit', ['firm'=> $firm]);
       }
       return redirect('/');
     }
@@ -101,8 +106,11 @@ class FirmController extends Controller
      */
     public function destroy($id)
     {
-      $admin = Admin::findOrFail($id);
-      $admin->delete();
-      return redirect()->route('admin.showfirms')->with(['message'=> 'Successfully deleted!!']);
+        if (Gate::allows('admin-only',auth()->user())) {
+          $firm = Firm::findOrFail($id);
+          $firm->delete();
+          return redirect()->route('admin.showfirms')->with(['message'=> 'Successfully deleted!!']);
+        }
+        return redirect('/');
     }
 }
