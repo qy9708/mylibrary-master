@@ -62,7 +62,7 @@ h2.a{
 
 @extends('layout.front')
 
-@section('title','LECTURER')
+@section('title','ADMIN')
 
 @section('content')
 <div  >
