@@ -13,8 +13,6 @@
 
 <body style="background-color: #E6E6FA;">
 
-    <!--navbar-->
-    @include('includes.navbar')
     <!--content-->
 
      @yield('content')

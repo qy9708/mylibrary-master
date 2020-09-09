@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class LecturerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -82,7 +82,7 @@ class StudentController extends Controller
         //
     }
 
-    public function studentdashboard(){
-      return view('/student/studentdashboard');
+    public function lecturerdashboard(){
+      return view('/lecturer/lecturerdashboard');
     }
 }
