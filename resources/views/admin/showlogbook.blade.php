@@ -7,10 +7,10 @@ use App\Common;
 
 	<!-- Bootstrap Boilerplate... -->
 
-		<h1 text-align="center"> Company List </h1>
+		<h1 text-align="center"> Logbook </h1>
 		<div class="panel-body">
 
-			@if (count($firms) > 0)
+			@if (count($logs) > 0)
 				 <table class="table table-striped task-table" border="1" width="100%"
 						style="border-collapse:collapse;font-family:Arial;">
 				<!-- Table Headings -->
@@ -28,7 +28,7 @@ use App\Common;
 
 			<!-- Table Body -->
 			<tbody>
-			 @foreach ($firms as $i => $firm)
+			 @foreach ($logs as $i => $log)
 
 
 			 <tr>

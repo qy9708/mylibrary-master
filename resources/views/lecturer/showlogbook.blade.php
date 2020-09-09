@@ -10,7 +10,7 @@ use App\Common;
 		<h1 text-align="center"> Logbook </h1>
 		<div class="panel-body">
 
-			@if (count($firms) > 0)
+			@if (count($logs) > 0)
 				 <table class="table table-striped task-table" border="1" width="100%"
 						style="border-collapse:collapse;font-family:Arial;">
 				<!-- Table Headings -->
