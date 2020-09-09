@@ -19,6 +19,7 @@ Route::get('/', 'HomeController@getPage')->middleware('auth');
 
 
 Route::get('/firmindex','FirmController@studentfirmindex')->name('firm.index')->middleware('auth');
+Route::get('/admindashboard','AdminController@admindashboard')->name('firm.index')->middleware('auth');
 Route::get('/studentdashboard','StudentController@studentdashboard')->name('firm.index')->middleware('auth');
 Route::get('/admin/{id}/edit','FirmController@edit')->name('admin.edit')->middleware('auth');
 Route::delete('/admin/{id}', 'FirmController@destroy')->name('admin.destroy');
