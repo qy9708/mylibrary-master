@@ -33,7 +33,7 @@ class AdminController extends Controller
           return view('/admin/create', ['firm' => $firm,]);
         }
         return redirect('/');
-}
+
     }
 
     /**

@@ -11,10 +11,15 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+     public function index(){
+        if (Gate::allows('student-only',auth()->user())) {
+
+          $logs = Log::orderBy('week','asc')->get();
+          return view('/student/showlogs',['logs' => $logs]);
+        }
+
+        return redirect('/');
+      }
 
     /**
      * Show the form for creating a new resource.

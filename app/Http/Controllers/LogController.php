@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Log;
+use App\Http\Resources\LogCollection;
+use App\Http\Resources\LogResource;
+use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class LogController extends Controller
 {
@@ -38,7 +42,12 @@ class LogController extends Controller
      */
     public function create()
     {
-        //
+      if (Gate::allows('student-only',auth()->user())) {
+        $logss = new Log();
+
+        return view('/student/create', ['log' => $log,]);
+      }
+      return redirect('/');
     }
 
     /**
@@ -49,7 +58,11 @@ class LogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $log = new Log();
+      $log->fill($request->all());
+      $log->save();
+
+      return redirect()->route('logindex');
     }
 
     /**
