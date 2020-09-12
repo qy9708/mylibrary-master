@@ -12,10 +12,24 @@ class LogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+  public function showlogindex(){
+     if (Gate::allows('student-only',auth()->user())) {
+
+       $logs = Log::orderBy('week','asc')->get();
+       return view('/student/showlogs',['logs' => $logs]);
+     }
+      if (Gate::allows('admin-only',auth()->user())) {
+
+         $logs = Log::orderBy('week','asc')->get();
+         return view('/admin/showlogs',['logs' => $logs]);
+      }
+      if (Gate::allows('lecturer-only',auth()->user())) {
+
+           $logs = Log::orderBy('week','asc')->get();
+           return view('/lecturer/showlogs',['logs' => $logs]);
+      }
+     return redirect('student.studentdashboard');
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -46,7 +60,12 @@ class LogController extends Controller
      */
     public function show($id)
     {
-        //
+      $log = Log::findOrFail($id);
+      if(!$log) throw new ModelNotFoundException;
+      $log = Log::findOrFail($id);
+      return view('student.showlogs',[
+          'log'=> $log,
+      ]);
     }
 
     /**
@@ -57,7 +76,13 @@ class LogController extends Controller
      */
     public function edit($id)
     {
-        
+      if (Gate::allows('student-only',auth()->user())) {
+      $log = Log::find($id);
+      if(!$log) throw new ModelNotFoundException;
+
+      return view('/student/edit', ['log'=> $log]);
+      }
+      return redirect('/');
     }
 
     /**
@@ -69,7 +94,13 @@ class LogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $log = Log::find($id);
+        if(!$log) throw new ModelNotFoundException;
+
+         $log->fill($request->all());
+         $log->save();
+
+         return redirect()->route('log.index');
     }
 
     /**
@@ -80,6 +111,11 @@ class LogController extends Controller
      */
     public function destroy($id)
     {
-        //
+      if (Gate::allows('student-only',auth()->user())) {
+        $log = Log::findOrFail($id);
+        $log->delete();
+        return redirect()->route('log.index')->with(['message'=> 'Successfully deleted!!']);
+      }
+      return redirect('/');
     }
 }

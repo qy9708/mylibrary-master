@@ -59,14 +59,12 @@ class FirmController extends Controller
      */
     public function show($id)
     {
-      {
         $firm = Firm::findOrFail($id);
         if(!$firm) throw new ModelNotFoundException;
         $firm = Firm::findOrFail($id);
         return view('student.showfirms',[
             'firm'=> $firm,
         ]);
-      }
     }
 
     /**
