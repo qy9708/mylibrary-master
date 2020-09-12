@@ -77,7 +77,7 @@ h2.a{
 </div>
 <div class="gallery" >
   <img src="/images/list.png"></i>
-  <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Log Records</button>
+  <button type="button" onclick="window.location='{{ url("/logindex") }}'" style="padding:2px 5px">Log Records</button>
 </div>
 </div>
 <div id="tabContent" style="margin:0px" >

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class FirmCollection extends ResourceCollection
+class LogCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -15,7 +15,7 @@ class FirmCollection extends ResourceCollection
     public function toArray($request)
     {
       return [
-          'data' =>FirmResource::collection($this->collection),
+          'data' =>LogResource::collection($this->collection),
       ];
     }
 }
