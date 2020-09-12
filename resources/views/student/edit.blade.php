@@ -17,7 +17,7 @@
 
 			<div class="form-group_row">
 				{!! Form::label('log-week','Week',['class' => 'control-label col-sm-3',]) !!}
-				<div class="col-sm-9">
+				<div class="col-sm-3">
 					{!! Form::text('week',null,[
 						'id'		=> 'log-week',
 						'class'		=> 'form-control',
@@ -29,7 +29,7 @@
 		<br></br>
 			<div class="form-group row">
 				{!! Form::label('firm-description','Description',['class' => 'control-label col-sm-3',]) !!}
-				<div class="col-sm-3">
+				<div class="col-sm-6">
           {!! Form::text('description',null,[
             'id'		=> 'log-description',
             'class'		=> 'form-control',
