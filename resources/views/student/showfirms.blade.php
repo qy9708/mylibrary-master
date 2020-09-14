@@ -19,6 +19,16 @@ use App\Common;
 			@if (count($firms) > 0)
 				 <table class="table table-striped task-table" border="1" width="100%"
 						style="border-collapse:collapse;font-family:Arial;" >
+						<div class="col-md-4">
+							<form action="/search" method="get">
+								<div class="form-group">
+									<input type="search" name="search" class="form-control">
+									<span class="form-group-btn">
+										<button type="submit" class="btn btn-primary">Search</button>
+									</span>
+								</div>
+							</form>
+						</div>
 				<!-- Table Headings -->
       <thead>
 			<br><br>
@@ -73,8 +83,6 @@ use App\Common;
 			 </tbody>
 		 </table>
 {{$firms->links()}}
-
-
 
 		</div>
  @endsection

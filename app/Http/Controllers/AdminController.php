@@ -49,7 +49,7 @@ class AdminController extends Controller
       $firm->fill($request->all());
       $firm->save();
 
-      return redirect()->route('firmindex');
+      return redirect()->route('firm.index');
     }
 
     /**

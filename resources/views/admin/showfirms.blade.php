@@ -100,7 +100,7 @@ use App\Common;
 			 </tbody>
 		 </table>
 
-
+{{$firms->links()}}
 
 
 		</div>

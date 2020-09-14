@@ -24,7 +24,7 @@ class FirmController extends Controller
        }
        if (Gate::allows('admin-only',auth()->user())) {
 
-         $firms = Firm::orderBy('name','asc')->get();
+         $firms = Firm::orderBy('name','asc')->paginate(1);
        return view('/admin/showfirms',['firms' => $firms]);
          }
 
@@ -38,8 +38,14 @@ class FirmController extends Controller
      */
     public function create()
     {
-        //
+      if (Gate::allows('admin-only',auth()->user())) {
+        $firms = new Firm();
+
+        return view('/admin/create', ['firms' => $firms,]);
+      }
+      return redirect('/');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -49,7 +55,11 @@ class FirmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $firms = new Firm();
+      $firms->fill($request->all());
+      $firms->save();
+
+      return redirect()->route('firm.index');
     }
 
     /**
