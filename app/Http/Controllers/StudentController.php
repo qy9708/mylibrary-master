@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class StudentController extends Controller
 {
@@ -20,13 +21,24 @@ class StudentController extends Controller
 
         return redirect('/');
       }
-
+      public function search(Request $request)
+      {
+        if (Gate::allows('student-only',auth()->user())) {
+          $search = $request->get('search');
+          $firms = DB::table('firms')->where('name', 'LIKE', '%'.$search.'%')
+                                      ->Orwhere('location', 'LIKE', '%'.$search.'%')
+                                      ->Orwhere('nature_of_business', 'LIKE', '%'.$search.'%')
+                                      ->paginate(1);
+          return view('/student/showfirms', compact('firms'));
+        }
+        return redirect('/');
+      }
       public function showinfoindex(){
-         if (Gate::allows('student-only',auth()->user())) {
+
            $student = ['role'=> 'student'];
-          $getInfo = Document::where($student)->orderBy('name', 'asc')->get();
-           return view('/student/studentinfo',['documents' => $documents]);
-         }
+           $getInfo = User::where($student)->orderBy('name', 'asc')->get();
+           return view('/student/studentinfo',['users' => $users]);
+
 
          return redirect('/');
        }

@@ -48,7 +48,7 @@ class FirmController extends Controller
       return redirect('/');
     }
 
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -62,6 +62,19 @@ class FirmController extends Controller
       $firms->save();
 
       return redirect()->route('firm.index');
+    }
+
+    public function search(Request $request)
+    {
+      if (Gate::allows('student-only',auth()->user())) {
+        $search = $request->get('search');
+        $firms = DB::table('firms')->where('name', 'LIKE', '%'.$search.'%')
+                                    ->Orwhere('location', 'LIKE', '%'.$search.'%')
+                                    ->Orwhere('nature_of_business', 'LIKE', '%'.$search.'%')
+                                    ->paginate(1);
+        return view('/student/showfirms', compact('firms'));
+      }
+      return redirect('/');
     }
 
     /**
