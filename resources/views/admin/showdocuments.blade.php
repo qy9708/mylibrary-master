@@ -8,7 +8,7 @@ use App\Common;
 	<!-- Bootstrap Boilerplate... -->
 
 
-		<h1 text-align="center"> Logbook </h1>
+		<h1 text-align="center"> Documents </h1>
 		<div class="panel-body">
 
 			@if (count($logs) > 0)
@@ -16,11 +16,9 @@ use App\Common;
 						style="border-collapse:collapse;font-family:Arial;">
 				<!-- Table Headings -->
       <thead>
-			<a href="{{ url('/studentdashboard') }}">Student Home Page </a>
-			<a>  |  </a>
-			<a href="{{ url('/student/create') }}"> Add New Log</a>
+			<a href="{{ url('/studentdashboard') }}">Admin Home Page </a>
 			<br></br>
-		
+
 
 				<tr>
 				 <th>No.</th>

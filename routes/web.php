@@ -20,6 +20,8 @@ Route::get('/', 'HomeController@getPage')->middleware('auth');
 
 Route::get('/firmindex','FirmController@showfirmindex')->name('firm.index')->middleware('auth');
 Route::get('/logindex','LogController@showlogindex')->name('log.index')->middleware('auth');
+Route::get('/search','FirmController@search')->name('firm.index')->middleware('auth');
+
 
 Route::get('/studentdashboard','StudentController@studentdashboard')->name('student.index')->middleware('auth');
 

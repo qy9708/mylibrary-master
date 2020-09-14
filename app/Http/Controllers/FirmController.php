@@ -8,6 +8,7 @@ use App\Http\Resources\FirmCollection;
 use App\Http\Resources\FirmResource;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use DB;
 
 class FirmController extends Controller
 {
@@ -17,6 +18,7 @@ class FirmController extends Controller
      * @return \Illuminate\Http\Response
      */
      public function showfirmindex(){
+
      if (Gate::allows('student-only',auth()->user())) {
 
        $firms = Firm::orderBy('name','asc')->paginate(1);
@@ -46,7 +48,27 @@ class FirmController extends Controller
       return redirect('/');
     }
 
+    public function search(Request $request)
+    {
+      if (Gate::allows('student-only',auth()->user())) {
+        $search = $request->get('search');
+        $firms = DB::table('firms')->where('name', 'LIKE', '%'.$search.'%')
+                                    ->Orwhere('location', 'LIKE', '%'.$search.'%')
+                                    ->Orwhere('nature_of_business', 'LIKE', '%'.$search.'%')
+                                    ->paginate(1);
+        return view('/student/showfirms', compact('firms'));
+      }
 
+      if (Gate::allows('admin-only',auth()->user())) {
+        $search = $request->get('search');
+        $firms = DB::table('firms')->where('name', 'LIKE', '%'.$search.'%')
+                                    ->Orwhere('location', 'LIKE', '%'.$search.'%')
+                                    ->Orwhere('nature_of_business', 'LIKE', '%'.$search.'%')
+                                    ->paginate(1);
+        return view('/admin/showfirms', compact('firms'));
+      }
+      return redirect('/');
+    }
     /**
      * Store a newly created resource in storage.
      *
