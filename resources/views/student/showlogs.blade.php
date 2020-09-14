@@ -7,6 +7,7 @@ use App\Common;
 
 	<!-- Bootstrap Boilerplate... -->
 
+
 		<h1 text-align="center"> Logbook </h1>
 		<div class="panel-body">
 
@@ -18,7 +19,9 @@ use App\Common;
 			<a href="{{ url('/studentdashboard') }}">Student Home Page </a>
 			<a>  |  </a>
 			<a href="{{ url('/student/create') }}"> Add New Log</a>
-			<br><br>
+			<br></br>
+		
+
 				<tr>
 				 <th>No.</th>
 				 <th>Week</th>
@@ -27,7 +30,7 @@ use App\Common;
 				 </tr>
 				 </thead>
 			<!-- Table Body -->
-			<tbody>
+			<tbody >
 			 @foreach ($logs as $i => $log)
 			 <tr>
 				 <td class="table-text">
@@ -72,6 +75,7 @@ use App\Common;
        @else
        @endif
 			 </tbody>
+
 		 </table>
 		</div>
  @endsection
