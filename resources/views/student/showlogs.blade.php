@@ -16,6 +16,8 @@ use App\Common;
 				<!-- Table Headings -->
       <thead>
 			<a href="{{ url('/studentdashboard') }}">Student Home Page </a>
+			<a>  |  </a>
+			<a href="{{ url('/student/create') }}"> Add New Log</a>
 			<br><br>
 				<tr>
 				 <th>No.</th>

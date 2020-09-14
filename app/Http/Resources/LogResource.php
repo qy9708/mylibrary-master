@@ -16,7 +16,7 @@ class LogResource extends Resource
     {
         return [
           "id"    => $this->when(!is_null($this->id), $this->id),
-          "week"=>$this->week,
+          "week"  =>$this->week,
           "description"     => $this->when(!is_null($this->description), $this->description),
 
         ];
