@@ -19,7 +19,7 @@ class FirmController extends Controller
      public function showfirmindex(){
      if (Gate::allows('student-only',auth()->user())) {
 
-       $firms = Firm::orderBy('name','asc')->get();
+       $firms = Firm::orderBy('name','asc')->paginate(1);
      return view('/student/showfirms',['firms' => $firms]);
        }
        if (Gate::allows('admin-only',auth()->user())) {
@@ -27,7 +27,7 @@ class FirmController extends Controller
          $firms = Firm::orderBy('name','asc')->get();
        return view('/admin/showfirms',['firms' => $firms]);
          }
-          $firms = App\User::paginate(1);
+
      return redirect('student.studentdashboard');
    }
 

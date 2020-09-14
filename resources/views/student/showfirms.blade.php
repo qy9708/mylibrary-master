@@ -12,7 +12,7 @@ use App\Common;
 			<div class="panel-heading">
 				<a href="{{ url('/studentdashboard') }}">Student Home Page </a>
 				<br></br>
-							
+
 			<div class="panel-body">
 
 
@@ -72,7 +72,7 @@ use App\Common;
        @endif
 			 </tbody>
 		 </table>
-
+{{$firms->links()}}
 
 
 
