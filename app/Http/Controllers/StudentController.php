@@ -21,6 +21,16 @@ class StudentController extends Controller
         return redirect('/');
       }
 
+      public function showinfoindex(){
+         if (Gate::allows('student-only',auth()->user())) {
+           $student = ['role'=> 'student'];
+          $getInfo = Document::where($student)->orderBy('name', 'asc')->get();
+           return view('/student/studentinfo',['documents' => $documents]);
+         }
+
+         return redirect('/');
+       }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -1,39 +1,24 @@
-<style>
-h{
-  text-align: center;
-  padding-left: 50px;
-  font-weight: bold;
-  font-size: 40px;
-  text-decoration: underline;
-}
-ol{
-  text-align: left;
-  padding-left: 50px;
-  font-weight: bold;
-  font-size: 30px;
-  color: blue;
-}
-p.a{
-  font-size:20px;
-  text-align: left;
-  color: black;
-}
-</style>
+<?php
+use App\Common;
+?>
 
-@extends('layout.front')
-
-@section('title','Student Information')
-
+@extends ('layout.app')
 @section('content')
-<h>Student Information</h>
-<br></br>
-<ol>
-<li>Internet Access</li>
-<p class="a">The Library is equipped with computers to allow easy access for patrons to check their emails, surf the internet or access online databases.</p>
-<li>Wireless Internet Access</li>
-<p class="a">The Library is equipped with wireless networking technology to allow library patrons easy access to the internet via their laptops or PDAs. Thus providing convenience and flexibility. This service is free of charge.</p>
-<li>Discussion Rooms</li>
-<p class="a">Discussion Rooms are available for group study anddiscussions. However, noise from discussions should be kept to an acceptable level.</p>
-<br></br>
-</ol>
-@endsection
+
+	<!-- Bootstrap Boilerplate... -->
+
+
+		<h1 text-align="center"> Student Info </h1>
+		<div class="panel-body">
+
+			@if (count($users) > 0)
+				 <table class="table table-striped task-table" border="1" width="100%"
+						style="border-collapse:collapse;font-family:Arial;">
+
+			<a href="{{ url('/studentdashboard') }}">Student Home Page </a>
+			<dl>
+        <dt> Name: </dt>
+        <dt> Email: </dt>
+      </dl>
+		</div>
+ @endsection

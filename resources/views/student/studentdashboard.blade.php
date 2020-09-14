@@ -70,7 +70,7 @@ h2.a{
 
 <div class="gallery">
 <img src="/images/user.png"></i>
-<button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Student Info</button>
+<button type="button" onclick="window.location='{{ url("/studentinfoindex") }}'" style="padding:2px 5px">Student Info</button>
 </div>
 
 <div class="gallery">

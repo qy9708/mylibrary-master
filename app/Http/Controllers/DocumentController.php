@@ -59,19 +59,38 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
       request()->validate([
-            'file' => 'required',
-            'file.*' => 'mimes:doc,pdf,docx'
+            'document' => 'required',
+            'document.*' => 'mimes:doc,pdf,docx'
         ]);
-        if($request->hasfile('file')) {
-            foreach($request->file('file') as $file)
-            {
-                $fileName = time().rand(0, 1000).pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                $fileName = $fileName.'.'.$file->getClientOriginalExtension();
-                $file->move(public_path(),$fileName);
-                $input['file'] = $filename;
-                Document::create($input);
-            }
-        return redirect()->route('document');
+        if($request->hasfile('name'))
+
+ {
+
+    foreach($request->document('name') as $document)
+
+    {
+
+        $name=$document->getClientOriginalName();
+
+        $document->move(public_path().'/files/', $name);
+
+        $data[] = $name;
+
+    }
+
+ }
+
+
+ $document= new Document();
+
+ $document->name=json_encode($data);
+
+ $document->save();
+
+
+return back()->with('success', 'Data Your files has been successfully added');
+
+}
     }
 
     /**
