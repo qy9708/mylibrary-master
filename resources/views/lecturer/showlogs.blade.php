@@ -23,14 +23,9 @@ use App\Common;
          <th>Description</th>
 				 </tr>
 				 </thead>
-
-
-
-			<!-- Table Body -->
+	<!-- Table Body -->
 			<tbody>
 			 @foreach ($logs as $i => $log)
-
-
 			 <tr>
 				 <td class="table-text">
 				 <div>{{ $i+1 }}</div>
@@ -47,9 +42,5 @@ use App\Common;
        @endif
 			 </tbody>
 		 </table>
-
-
-
-
 		</div>
  @endsection
