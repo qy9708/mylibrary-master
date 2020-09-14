@@ -11,7 +11,7 @@ use App\Common;
 		<h1 text-align="center"> Document </h1>
 		<div class="panel-body">
 
-			@if (count($logs) > 0)
+			@if (count($documents) > 0)
 				 <table class="table table-striped task-table" border="1" width="100%"
 						style="border-collapse:collapse;font-family:Arial;">
 				<!-- Table Headings -->
