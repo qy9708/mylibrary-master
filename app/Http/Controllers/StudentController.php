@@ -17,6 +17,7 @@ class StudentController extends Controller
 
           $logs = Log::orderBy('week','asc')->get();
           return view('/student/showlogs',['logs' => $logs]);
+          
         }
 
         return redirect('/');
@@ -52,8 +53,9 @@ class StudentController extends Controller
     {
       if (Gate::allows('student-only',auth()->user())) {
         $logs = new Log();
-
         return view('/student/create', ['logs' => $logs]);
+
+      }
       }
       return redirect('/');
     }
@@ -71,6 +73,8 @@ class StudentController extends Controller
       $log->save();
 
       return redirect()->route('logindex');
+
+
     }
 
     /**
@@ -81,7 +85,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+    //
     }
 
     /**
@@ -97,8 +101,8 @@ class StudentController extends Controller
       if(!$log) throw new ModelNotFoundException;
 
       return view('/student/edit', ['log'=> $log]);
-      }
-      return redirect('/');
+
+
     }
 
     /**

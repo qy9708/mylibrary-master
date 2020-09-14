@@ -16,7 +16,7 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  public function showdocindex(){
+  public function showdocumentindex(){
      if (Gate::allows('student-only',auth()->user())) {
 
        $documents = Document::orderBy('name','asc')->get();
@@ -58,39 +58,11 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-      request()->validate([
-            'document' => 'required',
-            'document.*' => 'mimes:doc,pdf,docx'
-        ]);
-        if($request->hasfile('name'))
+      $document = new Document();
+      $document->fill($request->all());
+      $document->save();
 
- {
-
-    foreach($request->document('name') as $document)
-
-    {
-
-        $name=$document->getClientOriginalName();
-
-        $document->move(public_path().'/files/', $name);
-
-        $data[] = $name;
-
-    }
-
- }
-
-
- $document= new Document();
-
- $document->name=json_encode($data);
-
- $document->save();
-
-
-return back()->with('success', 'Data Your files has been successfully added');
-
-}
+      return redirect()->route('document.index');
     }
 
     /**
