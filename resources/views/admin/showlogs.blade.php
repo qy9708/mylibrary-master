@@ -8,11 +8,12 @@ use App\Common;
 	<!-- Bootstrap Boilerplate... -->
 
 		<h1 text-align="center"> Logbook </h1>
-		<div class="panel-body">
 
+		<div class="panel-body">
+			
 			@if (count($logs) > 0)
 				 <table class="table table-striped task-table" border="1" width="100%"
-						style="border-collapse:collapse;font-family:Arial;">
+						style="border-collapse:collapse;font-family:Arial;" >
 				<!-- Table Headings -->
       <thead>
 			<a href="{{ url('/admindashboard') }}">Admin Home Page </a>

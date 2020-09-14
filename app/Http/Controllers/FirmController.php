@@ -27,6 +27,7 @@ class FirmController extends Controller
          $firms = Firm::orderBy('name','asc')->get();
        return view('/admin/showfirms',['firms' => $firms]);
          }
+          $firms = App\User::paginate(1);
      return redirect('student.studentdashboard');
    }
 
