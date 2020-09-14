@@ -31,7 +31,7 @@ class StudentController extends Controller
       if (Gate::allows('student-only',auth()->user())) {
         $logs = new Log();
 
-        return view('/student/create', ['log' => $log,]);
+        return view('/student/create', ['logs' => $logs]);
       }
       return redirect('/');
     }

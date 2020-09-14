@@ -16,21 +16,21 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  public function showlogindex(){
+  public function showdocindex(){
      if (Gate::allows('student-only',auth()->user())) {
 
-       $logs = Log::orderBy('week','asc')->get();
-       return view('/student/showlogs',['logs' => $logs]);
+       $documents = Document::orderBy('name','asc')->get();
+       return view('/student/showdocuments',['documents' => $documents]);
      }
       if (Gate::allows('admin-only',auth()->user())) {
 
-         $logs = Log::orderBy('week','asc')->get();
-         return view('/admin/showlogs',['logs' => $logs]);
+         $documents = Document::orderBy('name','asc')->get();
+         return view('/admin/showdocuments',['documents' => $documents]);
       }
       if (Gate::allows('lecturer-only',auth()->user())) {
 
-           $logs = Log::orderBy('week','asc')->get();
-           return view('/lecturer/showlogs',['logs' => $logs]);
+           $documents = Document::orderBy('name','asc')->get();
+           return view('/lecturer/showdocuments',['documents' => $documents]);
       }
      return redirect('student.studentdashboard');
    }
@@ -42,7 +42,12 @@ class DocumentController extends Controller
      */
     public function create()
     {
+      if (Gate::allows('student-only',auth()->user())) {
+        $documents = new Document();
 
+        return view('/student/doccreate', ['documents' => $documents]);
+      }
+      return redirect('/');
     }
 
     /**
@@ -53,7 +58,11 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
+      $documents = new Document();
+      $documents->fill($request->all());
+      $documents->save();
 
+      return redirect()->route('document.index');
     }
 
     /**
@@ -64,11 +73,11 @@ class DocumentController extends Controller
      */
     public function show($id)
     {
-      $log = Log::findOrFail($id);
-      if(!$log) throw new ModelNotFoundException;
-      $log = Log::findOrFail($id);
-      return view('student.showlogs',[
-          'log'=> $log,
+      $document = Document::findOrFail($id);
+      if(!$document) throw new ModelNotFoundException;
+      $document = Document::findOrFail($id);
+      return view('student.showdocuments',[
+          'document'=> $document,
       ]);
     }
 
@@ -81,10 +90,10 @@ class DocumentController extends Controller
     public function edit($id)
     {
       if (Gate::allows('student-only',auth()->user())) {
-      $log = Log::find($id);
-      if(!$log) throw new ModelNotFoundException;
+      $document = Document::find($id);
+      if(!$document) throw new ModelNotFoundException;
 
-      return view('/student/edit', ['log'=> $log]);
+      return view('/student/docedit', ['document'=> $document]);
       }
       return redirect('/');
     }
@@ -98,13 +107,13 @@ class DocumentController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $log = Log::find($id);
-        if(!$log) throw new ModelNotFoundException;
+      $document = Document::find($id);
+        if(!$document) throw new ModelNotFoundException;
 
-         $log->fill($request->all());
-         $log->save();
+         $document->fill($request->all());
+         $document->save();
 
-         return redirect()->route('log.index');
+         return redirect()->route('document.index');
     }
 
     /**
@@ -116,9 +125,9 @@ class DocumentController extends Controller
     public function destroy($id)
     {
       if (Gate::allows('student-only',auth()->user())) {
-        $log = Log::findOrFail($id);
-        $log->delete();
-        return redirect()->route('log.index')->with(['message'=> 'Successfully deleted!!']);
+        $document = Document::findOrFail($id);
+        $document->delete();
+        return redirect()->route('document.index')->with(['message'=> 'Successfully deleted!!']);
       }
       return redirect('/');
     }

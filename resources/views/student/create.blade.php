@@ -6,9 +6,9 @@
 
 
 	<div class="panel-body" style="font-size:20px;">
-	<button><a href="{{ url('/publisherindex') }}">Return to Log Records</a></button>
-		<!-- New publisher Form -->
-		{!! Form::model($log,['route' => ['log.store'],
+	<button><a href="{{ url('/showlogindex') }}">Return to Log Records</a></button>
+		<!-- New Log Form -->
+		{!! Form::model($logs,['route' => ['student.store'],
 								 'class' => 'form-horizontal']) !!}
 
                  <div class="form-group_row">
@@ -27,7 +27,7 @@
            			<div class="form-group_row">
            				{!! Form::label('log-description','Description',['class' => 'control-label col-sm-3',]) !!}
            				<div class="col-sm-6">
-           					{!! Form::text('description',null,[
+           					{!! Form::textarea('description',null,[
            						'id'		=> 'log-description',
            						'class'		=> 'form-control',
            						'maxlength' => 5000,

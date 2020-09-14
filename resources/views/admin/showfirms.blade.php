@@ -18,14 +18,7 @@ use App\Common;
 			<a href="{{ url('/admindashboard') }}">Admin Home Page </a>
 			<a>  |  </a>
 			<a href="{{ url('/admin/create') }}"> Add New Company</a>
-			<h6>Search By Company Name, Location or Nature of Business</h6>
-			<form action="/search" method="get">
-				<div class="input-group">
-					<input type="search" name="search" class="form-control" placeholder="Search Company">
-					<span class="input-group-prepend">
-						<button type="submit" class="btn btn-primary">Search</button>
-				</div>
-			</form>
+		
 			<br><br>
 				<tr>
 				 <th>No.</th>

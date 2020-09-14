@@ -48,27 +48,7 @@ class FirmController extends Controller
       return redirect('/');
     }
 
-    public function search(Request $request)
-    {
-      if (Gate::allows('student-only',auth()->user())) {
-        $search = $request->get('search');
-        $firms = DB::table('firms')->where('name', 'LIKE', '%'.$search.'%')
-                                    ->Orwhere('location', 'LIKE', '%'.$search.'%')
-                                    ->Orwhere('nature_of_business', 'LIKE', '%'.$search.'%')
-                                    ->paginate(1);
-        return view('/student/showfirms', compact('firms'));
-      }
-
-      if (Gate::allows('admin-only',auth()->user())) {
-        $search = $request->get('search');
-        $firms = DB::table('firms')->where('name', 'LIKE', '%'.$search.'%')
-                                    ->Orwhere('location', 'LIKE', '%'.$search.'%')
-                                    ->Orwhere('nature_of_business', 'LIKE', '%'.$search.'%')
-                                    ->paginate(1);
-        return view('/admin/showfirms', compact('firms'));
-      }
-      return redirect('/');
-    }
+    
     /**
      * Store a newly created resource in storage.
      *

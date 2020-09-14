@@ -6,34 +6,29 @@
 
 
 	<div class="panel-body" style="font-size:20px;">
-	<button><a href="{{ url('/publisherindex') }}">Return to Log Records</a></button>
+	<button><a href="{{ url('/showdocindex') }}">Return to Document Submission</a></button>
 		<!-- New publisher Form -->
-		{!! Form::model($log,['route' => ['log.store'],
+		{!! Form::model($document,['route' => ['document.store'],
 								 'class' => 'form-horizontal']) !!}
 
                  <div class="form-group_row">
-           				{!! Form::label('log-week','Week',['class' => 'control-label col-sm-3',]) !!}
+           				{!! Form::label('document-name','Document Name',['class' => 'control-label col-sm-3',]) !!}
            				<div class="col-sm-9">
-           					{!! Form::text('week',null,[
-           						'id'		=> 'log-week',
+           					{!! Form::text('name',null,[
+           						'id'		=> 'document-name',
            						'class'		=> 'form-control',
-           						'maxlength' => 10,
+           						'maxlength' => 100,
            					]) !!}
            				</div>
-           			<p>{{ $errors->getBag('default')->first('week') }}</p>
+           			<p>{{ $errors->getBag('default')->first('name') }}</p>
            			</div>
                  <br></br>
                  <br></br>
            			<div class="form-group_row">
-           				{!! Form::label('log-description','Description',['class' => 'control-label col-sm-3',]) !!}
+           				{!! Form::label('document-file','File',['class' => 'control-label col-sm-3',]) !!}
            				<div class="col-sm-6">
-           					{!! Form::text('description',null,[
-           						'id'		=> 'log-description',
-           						'class'		=> 'form-control',
-           						'maxlength' => 5000,
-           					]) !!}
+           					{!! Form::file('file') !!}
            				</div>
-           			<p>{{ $errors->getBag('default')->first('description') }}</p>
            			</div>
                  <br></br>
                  <br></br>

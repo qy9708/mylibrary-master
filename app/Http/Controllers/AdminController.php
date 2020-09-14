@@ -30,12 +30,12 @@ class AdminController extends Controller
         if (Gate::allows('admin-only',auth()->user())) {
           $firms = new Firm();
 
-          return view('/admin/create', ['firm' => $firm,]);
+          return view('/admin/create', ['firms' => $firms,]);
         }
         return redirect('/');
 
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -51,7 +51,18 @@ class AdminController extends Controller
 
       return redirect()->route('firm.index');
     }
-
+    public function search(Request $request)
+    {
+      if (Gate::allows('admin-only',auth()->user())) {
+        $search = $request->get('search');
+        $firms = DB::table('firms')->where('name', 'LIKE', '%'.$search.'%')
+                                    ->Orwhere('location', 'LIKE', '%'.$search.'%')
+                                    ->Orwhere('nature_of_business', 'LIKE', '%'.$search.'%')
+                                    ->paginate(1);
+        return view('/admin/showfirms', compact('firms'));
+      }
+      return redirect('/');
+    }
     /**
      * Display the specified resource.
      *

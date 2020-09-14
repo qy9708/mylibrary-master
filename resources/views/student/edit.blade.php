@@ -30,7 +30,7 @@
 			<div class="form-group row">
 				{!! Form::label('firm-description','Description',['class' => 'control-label col-sm-3',]) !!}
 				<div class="col-sm-6 col-md-4">
-          {!! Form::text('description',null,[
+          {!! Form::textarea('description',null,[
             'id'		=> 'log-description',
             'class'		=> 'form-control',
             'maxlength' => 5000,

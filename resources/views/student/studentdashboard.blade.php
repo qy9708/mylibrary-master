@@ -85,7 +85,7 @@ h2.a{
 
 <div class="gallery">
   <img src="/images/document.png"></i>
-  <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Document Submission</button>
+  <button type="button" onclick="window.location='{{ url("/docindex") }}'" style="padding:2px 5px">Document Submission</button>
 </div>
 
 </div>

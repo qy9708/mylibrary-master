@@ -8,7 +8,7 @@ use App\Common;
 	<!-- Bootstrap Boilerplate... -->
 
 
-		<h1 text-align="center"> Logbook </h1>
+		<h1 text-align="center"> Document </h1>
 		<div class="panel-body">
 
 			@if (count($logs) > 0)
@@ -18,35 +18,35 @@ use App\Common;
       <thead>
 			<a href="{{ url('/studentdashboard') }}">Student Home Page </a>
 			<a>  |  </a>
-			<a href="{{ url('/student/create') }}"> Add New Log</a>
+			<a href="{{ url('/student/create') }}"> Add New Document</a>
 			<br></br>
-		
+
 
 				<tr>
 				 <th>No.</th>
-				 <th>Week</th>
+				 <th>Document Name</th>
          <th>Description</th>
 				 <th colspan="2">Actions</th>
 				 </tr>
 				 </thead>
 			<!-- Table Body -->
 			<tbody >
-			 @foreach ($logs as $i => $log)
+			 @foreach ($documents as $i => $document)
 			 <tr>
 				 <td class="table-text">
 				 <div>{{ $i+1 }}</div>
 			 </td>
 			  <td class="table-text">
-				 <div>{{ $log->week }}</div>
+				 <div>{{ $document->name }}</div>
 			 </td>
        <td class="table-text">
-        <div>{{ $log->description }}</div>
+        <div>{{ $document->file }}</div>
         </td>
 				<td class="table-text">
 				 <div >
 				 {!! link_to_route( 'student.edit',
 									 $title = 'Edit',
-									 $parameters = ['id' => $log->id, ]
+									 $parameters = ['id' => $document->id, ]
 					) !!}
 
 				 </div>
@@ -57,7 +57,7 @@ use App\Common;
 
 				{!! Form::open(['method' => 'DELETE',
 								'route' => ['student.destroy',
-								$log->id],
+								$document->id],
 								'onsubmit' => 'return confirm("Are you sure ?")']
 				) !!}
 
