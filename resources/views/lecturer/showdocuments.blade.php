@@ -16,17 +16,14 @@ use App\Common;
 						style="border-collapse:collapse;font-family:Arial;">
 				<!-- Table Headings -->
       <thead>
-			<a href="{{ url('/studentdashboard') }}">Student Home Page </a>
-			<a>  |  </a>
-			<a href="{{ url('/student/create') }}"> Add New Log</a>
+			<a href="{{ url('/studentdashboard') }}">Lecturer Home Page </a>
 			<br></br>
-		
+
 
 				<tr>
 				 <th>No.</th>
 				 <th>Week</th>
          <th>Description</th>
-				 <th colspan="2">Actions</th>
 				 </tr>
 				 </thead>
 			<!-- Table Body -->

@@ -67,28 +67,26 @@ h2.a{
 @section('content')
 <div  >
 <div id="tabContent" >
+
 <div class="gallery">
 <img src="/images/user.png"></i>
 <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Student Info</button>
 </div>
+
 <div class="gallery">
   <img src="/images/list.png"></i>
   <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Company List</button>
 </div>
+
 <div class="gallery" >
   <img src="/images/list.png"></i>
   <button type="button" onclick="window.location='{{ url("/logindex") }}'" style="padding:2px 5px">Log Records</button>
 </div>
+
+<div class="gallery">
+  <img src="/images/document.png"></i>
+  <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Document Submission</button>
 </div>
-<div id="tabContent" style="margin:0px" >
-  <div class="gallery">
-    <img src="/images/document.png"></i>
-    <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Report Submission</button>
-  </div>
-  <div class="gallery">
-    <img src="/images/document.png"></i>
-    <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Document Submission</button>
-  </div>
 
 </div>
 </div>
