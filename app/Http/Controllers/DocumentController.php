@@ -60,7 +60,7 @@ class DocumentController extends Controller
     {
       request()->validate([
             'file' => 'required',
-            'file.*' => 'mimes:doc,pdf,docx,txt,zip,jpeg,jpg,png'
+            'file.*' => 'mimes:doc,pdf,docx'
         ]);
         if($request->hasfile('file')) {
             foreach($request->file('file') as $file)
@@ -71,7 +71,7 @@ class DocumentController extends Controller
                 $input['file'] = $filename;
                 Document::create($input);
             }
-        return redirect()->route('document'); 
+        return redirect()->route('document');
     }
 
     /**
