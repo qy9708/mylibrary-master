@@ -30,5 +30,12 @@ Route::put('/admin/{id}','FirmController@update')->name('admin.update')->middlew
 Route::get('/admin/create','FirmController@create')->name('admin.create')->middleware('auth');
 Route::post('/admin/store','FirmController@store')->name('admin.store')->middleware('auth');
 
+Route::get('/student/{id}/edit','LogController@edit')->name('student.edit')->middleware('auth');
+Route::delete('/student/{id}', 'LogController@destroy')->name('student.destroy');
+Route::put('/student/{id}','LogController@update')->name('student.update')->middleware('auth');
+Route::get('/student/create','LogController@create')->name('student.create')->middleware('auth');
+Route::post('/student/store','LogController@store')->name('student.store')->middleware('auth');
+
+
 
 Auth::routes();

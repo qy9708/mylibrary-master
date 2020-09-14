@@ -28,7 +28,12 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+      if (Gate::allows('student-only',auth()->user())) {
+        $logs = new Log();
+
+        return view('/student/create', ['log' => $log,]);
+      }
+      return redirect('/');
     }
 
     /**
@@ -39,7 +44,11 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $log = new Log();
+      $log->fill($request->all());
+      $log->save();
+
+      return redirect()->route('logindex');
     }
 
     /**
@@ -61,7 +70,13 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+      if (Gate::allows('student-only',auth()->user())) {
+      $log = Log::find($id);
+      if(!$log) throw new ModelNotFoundException;
+
+      return view('/student/edit', ['log'=> $log]);
+      }
+      return redirect('/');
     }
 
     /**
@@ -73,7 +88,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $log = Log::find($id);
+        if(!$log) throw new ModelNotFoundException;
+
+         $log->fill($request->all());
+         $log->save();
+
+         return redirect()->route('log.index');
     }
 
     /**
@@ -84,7 +105,12 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+      if (Gate::allows('student-only',auth()->user())) {
+        $log = Log::findOrFail($id);
+        $log->delete();
+        return redirect()->route('log.index')->with(['message'=> 'Successfully deleted!!']);
+      }
+      return redirect('/');
     }
 
     public function studentdashboard(){

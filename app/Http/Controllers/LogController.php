@@ -42,12 +42,7 @@ class LogController extends Controller
      */
     public function create()
     {
-      if (Gate::allows('student-only',auth()->user())) {
-        $logss = new Log();
 
-        return view('/student/create', ['log' => $log,]);
-      }
-      return redirect('/');
     }
 
     /**
@@ -58,11 +53,7 @@ class LogController extends Controller
      */
     public function store(Request $request)
     {
-      $log = new Log();
-      $log->fill($request->all());
-      $log->save();
 
-      return redirect()->route('logindex');
     }
 
     /**

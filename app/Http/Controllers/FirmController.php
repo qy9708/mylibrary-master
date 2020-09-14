@@ -65,6 +65,7 @@ class FirmController extends Controller
         return view('student.showfirms',[
             'firm'=> $firm,
         ]);
+
     }
 
     /**

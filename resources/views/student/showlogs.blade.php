@@ -24,14 +24,9 @@ use App\Common;
 				 <th colspan="2">Actions</th>
 				 </tr>
 				 </thead>
-
-
-
 			<!-- Table Body -->
 			<tbody>
 			 @foreach ($logs as $i => $log)
-
-
 			 <tr>
 				 <td class="table-text">
 				 <div>{{ $i+1 }}</div>
@@ -43,21 +38,21 @@ use App\Common;
         <div>{{ $log->description }}</div>
         </td>
 				<td class="table-text">
-				 <div>
+				 <div >
 				 {!! link_to_route( 'student.edit',
 									 $title = 'Edit',
-									 $parameters = ['id' => $student->id, ]
+									 $parameters = ['id' => $log->id, ]
 					) !!}
 
 				 </div>
 			 </td>
-				<td class="table-text">
+				<td class="table-text" colspan="4">
 
 				<div>
 
 				{!! Form::open(['method' => 'DELETE',
 								'route' => ['student.destroy',
-								$student->id],
+								$log->id],
 								'onsubmit' => 'return confirm("Are you sure ?")']
 				) !!}
 
@@ -76,9 +71,5 @@ use App\Common;
        @endif
 			 </tbody>
 		 </table>
-
-
-
-
 		</div>
  @endsection
