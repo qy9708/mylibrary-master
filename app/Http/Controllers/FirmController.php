@@ -61,7 +61,7 @@ class FirmController extends Controller
       $firms->fill($request->all());
       $firms->save();
 
-      return redirect()->route('firm.index');
+      return redirect()->route('firmindex');
     }
 
     public function search(Request $request)

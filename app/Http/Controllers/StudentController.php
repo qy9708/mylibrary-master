@@ -72,7 +72,7 @@ class StudentController extends Controller
       $log->fill($request->all());
       $log->save();
 
-      return redirect()->route('logindex');
+      return redirect()->route('log.index');
 
 
     }

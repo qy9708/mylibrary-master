@@ -36,11 +36,5 @@ Route::put('/student/{id}','LogController@update')->name('student.update')->midd
 Route::get('/student/create','LogController@create')->name('student.create')->middleware('auth');
 Route::post('/student/store','LogController@store')->name('student.store')->middleware('auth');
 
-//Document Controller
-Route::get('/docindex','DocumentController@showdocindex')->name('doc.index')->middleware('auth');
-Route::get('/student/create','DocumentController@create')->name('student.create')->middleware('auth');
-Route::post('/student/store','DocumentController@store')->name('student.store')->middleware('auth');
-
-Route::get('/studentinfoindex','StudentController@showinfoindex')->name('info.index')->middleware('auth');
 
 Auth::routes();
