@@ -42,6 +42,5 @@ Route::get('/student/create','DocumentController@create')->name('student.create'
 Route::post('/student/store','DocumentController@store')->name('student.store')->middleware('auth');
 
 Route::get('/studentinfoindex','StudentController@showinfoindex')->name('info.index')->middleware('auth');
-Route::get('/file','DocumentController@index')->name('document.index')->middleware('auth');
-Route::post('/file','DocumentController@store')->name('file.store')->middleware('auth');
+
 Auth::routes();

@@ -71,6 +71,10 @@ h2.a{
 <img src="/images/document.png"></i>
 <button type="button" onclick="window.location='{{ url("/firmindex") }}'" style="padding:2px 5px">Company List</button>
 </div>
+<div class="gallery">
+<img src="/images/user.png"></i>
+<button type="button" onclick="window.location='{{ url("/assignlecturerindex") }}'" style="padding:2px 5px">Assign Lecturers</button>
+</div>
 </div>
 </div>
 <br></br>
