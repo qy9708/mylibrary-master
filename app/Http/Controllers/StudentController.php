@@ -17,7 +17,7 @@ class StudentController extends Controller
 
           $logs = Log::orderBy('week','asc')->get();
           return view('/student/showlogs',['logs' => $logs]);
-          
+
         }
 
         return redirect('/');
@@ -55,7 +55,7 @@ class StudentController extends Controller
         $logs = new Log();
         return view('/student/create', ['logs' => $logs]);
 
-      }
+
       }
       return redirect('/');
     }
@@ -85,7 +85,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-    //
+      //
     }
 
     /**
